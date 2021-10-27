@@ -32,8 +32,8 @@ print(build_bitmap(run_list))
 
 find_smallest = [
     #build_bitmap([[build_bitmap([["1", 1],["0", 2**12 - 1]]), 2**13]]), #196586 #Evenly distributed
-    #build_bitmap([[build_bitmap([["1", 1],["0", 2**12 - 1]]), 2**13 - 1],["0", 2**12 - 1],["1",1]]), #196588 #Evenly distributed with final run reversed with 1 at the end
-    build_bitmap([[build_bitmap([["0", 2**12 - 1], ["1", 1]]), 2**13]]) #Biggest so far 196608 #Evenly distributed starting with 0s
+    #build_bitmap([[build_bitmap([["1", 1],["0", 2**13 - 1]]), 2**12 - 1],["0", 2**12 - 1],["1",1]]), #196588 #Evenly distributed with final run reversed with 1 at the end
+    build_bitmap([[build_bitmap([["0", 2**13 - 1], ["1", 1]]), 2**12]]) #Biggest so far 106496 #Evenly distributed starting with 0s
     
     
     #build_bitmap([["001", 2**12], ["0", 2**25 - 2**14]]) #001001...s then trailing 0s
@@ -41,6 +41,13 @@ find_smallest = [
     #Best case:
     #build_bitmap([["1", 2**12], ["0", 2**25 - 2**12]])#, #Ones first then all zeros
 ]
+
+#count 1s in resulting bitmap:
+one_count = 0
+for l in find_smallest[0]:
+    if l == "1":
+        one_count = one_count + 1
+print("There are", str(one_count), "1 values in the bitmap.")
 
 validate = [
     "01000001"
